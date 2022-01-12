@@ -29,6 +29,9 @@
     var user =[[${user}]]
 </script>
 
+<!--자바스크립트 인라인 each -->
+[# th:each="user, stat: ${users}"]
+var user[[${stat.count}]]= [[${user}]]
 
 </body>
 </html>
