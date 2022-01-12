@@ -97,14 +97,7 @@ public class BasicController {
         return "basic/each";
     }
 
-    private void addUsers(Model model) {
-        ArrayList<User> list = new ArrayList<>();
-        list.add(new User("userA", 10));
-        list.add(new User("userB", 20));
-        list.add(new User("userC", 30));
 
-        model.addAttribute("users", list);
-    }
 
     @GetMapping("/condition")
     public String condition(Model model){
@@ -127,8 +120,26 @@ public class BasicController {
     @GetMapping("/javascript")
     public String javascript(Model model){
 
-        model.addAttribute("user", new User("userA", 10));
+//        ArrayList<User> list = new ArrayList<>();
+//        list.add(new User("UserA", 10));
+//        list.add(new User("UserB", 20));
+//        list.add(new User("UserC", 30));
+//
+//        model.addAttribute("users", list);
+
+
+        model.addAttribute("user",new User("userA", 10));
+        addUsers(model);
         return "basic/javascript";
+    }
+
+    private void addUsers(Model model) {
+        ArrayList<User> list = new ArrayList<>();
+        list.add(new User("userA", 10));
+        list.add(new User("userB", 20));
+        list.add(new User("userC", 30));
+
+        model.addAttribute("users", list);
     }
 
     @Component("helloBean")
@@ -137,6 +148,9 @@ public class BasicController {
             return "Hello"+ data;
         }
     }
+
+
+
 
     @Data
     static  class User{
